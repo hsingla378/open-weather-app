@@ -1,2 +1,0 @@
-# open-weather-app
- 
