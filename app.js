@@ -2,11 +2,11 @@ const { json } = require("body-parser")
 const express = require("express")
 const bodyParser = require("body-parser")
 const fs = require("fs")
-
 const app = express()
 const https = require("https")
 const { fstat } = require("fs")
 const { send } = require("process")
+require("dotenv").config()
 
 app.use(bodyParser.urlencoded({extended: true}))
 
@@ -17,7 +17,7 @@ app.get("/", function(req, res, next){
 app.post("/", (req,res) =>{
 
     const query = req.body.cityName;
-    const apiKey = "54033f0864dc6ac6da9c0e8af059c847";
+    const apiKey = process.env.API;
     const unit = "metric"
 
     const url = "https://api.openweathermap.org/data/2.5/weather?q=" + query + "&appid=" + apiKey +  "&units=" + unit
